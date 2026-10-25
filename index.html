@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizMaster Pro | Interactive Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f393.png">
+</head>
+<body>
+  <main class="app-wrapper">
+    <div class="quiz-card">
+
+      <!-- 1. START SCREEN -->
+      <section id="start-screen" class="screen active">
+        <div class="badge">Interactive Knowledge Check</div>
+        <h1 class="hero-title">QuizMaster <span>Pro</span></h1>
+        <p class="hero-subtitle">Test your knowledge across technology, science, and world trivia under timed conditions.</p>
+
+        <div class="category-selector">
+          <label for="category-select" class="selector-label">Select Topic Category</label>
+          <select id="category-select" class="custom-select">
+            <option value="all">All Categories (15 Questions)</option>
+            <option value="tech">Computer Science & Tech (7 Questions)</option>
+            <option value="science">Science & Space (5 Questions)</option>
+            <option value="general">World & General Trivia (3 Questions)</option>
+          </select>
+        </div>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-value" id="start-q-count">15</span>
+            <span class="meta-label">Questions</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value">15s</span>
+            <span class="meta-label">Per Question</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value">Instant</span>
+            <span class="meta-label">Explanations</span>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn btn-primary btn-full">Start Assessment</button>
+      </section>
+
+      <!-- 2. QUIZ SCREEN -->
+      <section id="quiz-screen" class="screen">
+        <header class="quiz-header">
+          <div class="header-top">
+            <span class="category-pill" id="question-category">Category</span>
+            <div class="timer-pill" id="timer-pill">
+              <svg class="timer-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span id="timer-text">15s</span>
+            </div>
+          </div>
+
+          <div class="progress-info">
+            <span id="question-counter">Question 1 of 15</span>
+            <span id="live-score">Score: 0</span>
+          </div>
+
+          <div class="progress-track" aria-label="Quiz Progress">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+
+          <div class="timer-track" aria-label="Question Timer">
+            <div class="timer-fill" id="timer-fill"></div>
+          </div>
+        </header>
+
+        <div class="question-body">
+          <h2 class="question-text" id="question-text">Loading question...</h2>
+          <div class="options-list" id="options-list" role="listbox" aria-label="Answer Options"></div>
+        </div>
+
+        <div class="feedback-box" id="feedback-box" aria-live="polite">
+          <strong id="feedback-status"></strong>
+          <p id="feedback-explanation"></p>
+        </div>
+
+        <footer class="quiz-footer">
+          <span class="keyboard-hint">Tip: Press 1–4 to select, Enter to continue</span>
+          <button id="action-btn" class="btn btn-primary">Submit Answer</button>
+        </footer>
+      </section>
+
+      <!-- 3. RESULT SCREEN -->
+      <section id="result-screen" class="screen">
+        <div class="badge" id="result-badge">Assessment Complete</div>
+        <h2 class="result-title" id="result-title">Great Effort!</h2>
+        <p class="result-subtitle" id="result-message">Here is a breakdown of your performance.</p>
+
+        <div class="score-showcase">
+          <div class="score-ring">
+            <span class="score-percentage" id="score-percentage">0%</span>
+            <span class="score-fraction" id="score-fraction">0 / 15</span>
+          </div>
+        </div>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-value text-success" id="stat-correct">0</span>
+            <span class="meta-label">Correct</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value text-danger" id="stat-wrong">0</span>
+            <span class="meta-label">Incorrect</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value" id="stat-time">0s</span>
+            <span class="meta-label">Avg. Time</span>
+          </div>
+        </div>
+
+        <div class="review-section">
+          <h3 class="review-heading">Answer Review</h3>
+          <div class="review-list" id="review-list"></div>
+        </div>
+
+        <div class="result-actions">
+          <button id="restart-btn" class="btn btn-primary btn-full">Play Again</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
